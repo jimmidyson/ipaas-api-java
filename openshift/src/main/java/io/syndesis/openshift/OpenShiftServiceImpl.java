@@ -33,6 +33,8 @@ import io.fabric8.openshift.client.OpenShiftClient;
 
 public class OpenShiftServiceImpl implements OpenShiftService {
 
+    public static final String JAEGER_SERVICE_NAME = "JAEGER_SERVICE_NAME";
+
     private final NamespacedOpenShiftClient openShiftClient;
     private final OpenShiftConfigurationProperties config;
 
@@ -155,6 +157,7 @@ public class OpenShiftServiceImpl implements OpenShiftService {
                 .withMountPath("/deployments/config")
                 .withReadOnly(false)
             .endVolumeMount()
+            .addNewEnv().withName(JAEGER_SERVICE_NAME).withValue(projectName).endEnv()
             .endContainer()
             .addNewVolume()
                 .withName("secret-volume")

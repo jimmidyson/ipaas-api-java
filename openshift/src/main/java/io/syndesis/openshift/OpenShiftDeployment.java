@@ -15,14 +15,12 @@
  */
 package io.syndesis.openshift;
 
-
+import io.fabric8.kubernetes.client.RequestConfig;
+import io.fabric8.kubernetes.client.RequestConfigBuilder;
 import org.immutables.value.Value;
 
 import java.util.Optional;
 import java.util.Properties;
-
-import io.fabric8.kubernetes.client.RequestConfig;
-import io.fabric8.kubernetes.client.RequestConfigBuilder;
 
 @Value.Immutable
 public interface OpenShiftDeployment {
